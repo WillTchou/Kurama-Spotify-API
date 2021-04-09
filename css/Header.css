@@ -1,0 +1,29 @@
+.nav_link{
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.pages{
+    display:flex;
+    text-decoration: none;
+}
+
+.form-search{
+    transform: translate(480%,-20%);
+}
+
+.loupe{
+    transform: translate(980%,150%);
+}
+
+.list-album {
+    list-style-position:outside;
+    display:flex;
+}
+
+input[type="text"]{
+    border-radius: 20px;
+    border:2px solid red;
+    width:150%;
+    position:static;
+}

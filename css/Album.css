@@ -1,0 +1,22 @@
+.lecture{
+    display: flex;
+    justify-content: space-between;
+}
+
+.list-group{
+    opacity:0.8;
+    position:relative;
+    margin-top: 5px;
+    box-sizing: content-box;
+}
+
+.list-group-item{
+    margin:5px;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.list-group-item:hover{
+    background-color: #931513;
+    transform: translate(0, -10px);
+}

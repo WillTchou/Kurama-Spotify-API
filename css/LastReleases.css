@@ -1,0 +1,23 @@
+.carte{
+    justify-content: center;
+    padding : 4%;
+    grid-template-rows: repeat(3, 100px);
+    margin:8px;
+    overflow:scroll;
+    box-shadow:  5px 5px 5px rgba(0,0,0,0.4),
+                inset -5px -5px 10px rgba(255,255,255,0.1)
+}
+
+.carte:hover{
+    background-color: #931513;
+}
+
+.liste-albums{
+    display:grid;
+    grid-template-columns: repeat(4, 300px);   
+    justify-content: center;
+    justify-content: space-around;
+    margin-top: 3%;
+}
+
+
