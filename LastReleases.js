@@ -1,6 +1,6 @@
 import React,{ useState,useEffect } from 'react';
 import './css/LastReleases.css'
-import {Card,Badge} from 'react-bootstrap';
+import {Badge} from 'react-bootstrap';
 import {NavLink} from 'react-router-dom';
 import Header from './Header';
 import axios from 'axios';
@@ -42,18 +42,18 @@ function LastReleases(){
                     <div className="liste-albums">
                         {albums.map((item,index)=>(
                             <NavLink to={`/album/view/${item.id}`}>
-                                <Card className="carte" style={{ width: '18rem' }} key={index}>
-                                <Card.Img variant="top" src={item.images[1].url} />
-                                <Card.Body>
-                                    <Badge className="titre" variant="danger">{item.name}</Badge>
-                                    <Card.Text>
-                                        <Badge variant="light">Artist: </Badge>
-                                        {item.artists.map((artist)=>(
-                                            <Badge variant="danger">{artist.name}</Badge>
-                                        ))} 
-                                    </Card.Text>
-                                </Card.Body>
-                                </Card>
+                                <div className="carte" style={{ width: '20rem' }} key={index}>
+                                  <img alt="album-img" src={item.images[1].url} />
+                                  <div className="container">
+                                      <Badge className="titre" variant="danger">{item.name}</Badge>
+                                      <p>
+                                          <Badge variant="light">Artist: </Badge>
+                                          {item.artists.map((artist)=>(
+                                              <Badge variant="danger">{artist.name}</Badge>
+                                          ))} 
+                                      </p>
+                                  </div>
+                                </div>
                             </NavLink>
                         ))}               
                     </div>

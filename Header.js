@@ -1,5 +1,5 @@
 import React from 'react';
-import {Navbar,Nav,ListGroup,Badge} from 'react-bootstrap';
+import {ListGroup,Badge} from 'react-bootstrap';
 import {Search} from 'react-bootstrap-icons';
 import {NavLink} from 'react-router-dom';
 import './css/Header.css';
@@ -14,6 +14,7 @@ export default class Header extends React.Component{
         this.handleChange=this.handleChange.bind(this);
     }
 
+
     handleChange(event){
         this.setState({value:event.target.value});
         axios.get("https://api.spotify.com/v1/search?q="+this.state.value+"&type=album&market=FR&limit=6&offset=5",{
@@ -22,38 +23,52 @@ export default class Header extends React.Component{
                 } 
                 })
                 .then((res)=>{
-                    this.setState({results:res.data.albums.items})
+                    this.setState({results:res.data.albums.items});
+                    if(this.state.value==='')    this.setState({results:[]});
                 })
+    }
+
+    logout=()=>{
+        localStorage.clear();
+        window.location.href="/login"
     }
 
     render(){
         const {value,results}=this.state;
         return (
             <div className="Header">
-                <Navbar bg="light" variant="light">
-                    <Navbar.Brand>Kurama</Navbar.Brand>
-                    <Nav className="pages">
-                            <Nav.Link>
-                                <NavLink exact to="/" ClassName="nav_link">
+                <header> 
+                    <nav>                                                
+                        <ul className="pages">
+                            <li>
+                            <p>Kurama</p>
+                            </li>
+                            <li>
+                                <NavLink exact to="/" className="nav_link">
                                     Last Releases
                                 </NavLink>
-                            </Nav.Link>
-                    </Nav>
+                            </li>
+                           <li>
+                                <p onClick={this.logout}>
+                                    logout
+                                </p>
+                            </li>
+                        </ul>     
+                    </nav>
                     <div className="form-search">  
-                        <Search className="loupe"/>            
-                        <input 
-                                type="text" 
-                                placeholder="Search an album..." 
-                                value={value}
-                                onChange={this.handleChange}
-                                className="cherche"
-                        />                      
-                    </div>   
-                </Navbar>
-                <ListGroup className="list-album">
+                                    <Search className="loupe"/>            
+                                    <input 
+                                        type="text" 
+                                        placeholder="Search an album..." 
+                                        value={value}
+                                        onChange={this.handleChange}
+                                    />                      
+                    </div> 
+                </header>             
+                <ListGroup id="search-album">
                             {results.map((result,index)=>(
                                 <NavLink to={`/album/view/${result.id}`}>
-                                    <ListGroup.Item className="list-album-item" key={index.toString()}>
+                                    <ListGroup.Item id="search-album-item" key={index.toString()}>
                                         <img src={result.images[2].url} alt="img-alb" width="64" height="64"/>
                                         <div className="album-desc">
                                             <Badge variant="danger" class="album-name">
