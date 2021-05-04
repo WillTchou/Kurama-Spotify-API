@@ -1,9 +1,10 @@
 import React from 'react';
-import {ListGroup,Badge} from 'react-bootstrap';
+import {Badge} from 'react-bootstrap';
 import {Search} from 'react-bootstrap-icons';
 import {NavLink} from 'react-router-dom';
 import './css/Header.css';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 export default class Header extends React.Component{
 
@@ -13,7 +14,6 @@ export default class Header extends React.Component{
                     results:[]};
         this.handleChange=this.handleChange.bind(this);
     }
-
 
     handleChange(event){
         this.setState({value:event.target.value});
@@ -27,6 +27,7 @@ export default class Header extends React.Component{
                     if(this.state.value==='')    this.setState({results:[]});
                 })
     }
+
 
     logout=()=>{
         localStorage.clear();
@@ -55,8 +56,7 @@ export default class Header extends React.Component{
                             </li>
                         </ul>     
                     </nav>
-                    <div className="form-search">  
-                                    <Search className="loupe"/>            
+                    <div className="form-search"> 
                                     <input 
                                         type="text" 
                                         placeholder="Search an album..." 
@@ -65,23 +65,29 @@ export default class Header extends React.Component{
                                     />                      
                     </div> 
                 </header>             
-                <ListGroup id="search-album">
+                <ul className="search-album">
                             {results.map((result,index)=>(
-                                <NavLink to={`/album/view/${result.id}`}>
-                                    <ListGroup.Item id="search-album-item" key={index.toString()}>
-                                        <img src={result.images[2].url} alt="img-alb" width="64" height="64"/>
-                                        <div className="album-desc">
-                                            <Badge variant="danger" class="album-name">
-                                                {result.name}
-                                            </Badge>
-                                            <p>{result.release_date}</p>
-                                        </div>                                      
-                                    </ListGroup.Item>
-                                </NavLink>
+                                    <li className="search-album-item" key={index.toString()}>
+                                        <a href={`/album/view/${result.id}`}>
+                                            <div className="resultat">
+                                                <img src={result.images[2].url} alt="img-alb" width="64" height="64"/>
+                                                <div className="album-desc">
+                                                    <Badge variant="danger" class="album-name">
+                                                        {result.name}
+                                                    </Badge>
+                                                    <p id="date">({result.release_date})</p>
+                                                </div>
+                                            </div>
+                                        </a>                                      
+                                    </li>
                             ))}
-                </ListGroup> 
+                </ul> 
             </div>
         )
     }
     
+}
+
+Headers.PropTypes={
+    event:PropTypes.event
 }

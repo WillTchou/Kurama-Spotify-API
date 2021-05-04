@@ -4,7 +4,8 @@ import {PlayCircle,PauseCircle,StopCircle} from 'react-bootstrap-icons';
 import {Howl,Howler} from 'howler';
 import Header from './Header';
 import axios from 'axios';
-import './css/Album.css'
+import './css/Album.css';
+
 
 
 export default class Album extends Component{
