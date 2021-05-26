@@ -1,0 +1,97 @@
+*{
+    text-decoration: none;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    align-items: center;
+    height: 120px;
+    padding:30px 10%;
+    background-color: 	#DCDCDC;
+    border-radius: 6px;
+    box-shadow: 0 4px 3px 0 rgba(0,0,0,.1);
+}
+
+nav .pages{
+    float: left;
+    margin-left: -180px;
+}
+
+.pages li{   
+    display:inline-block;
+    padding: 0px 10px;
+}
+
+
+
+nav p{
+    font-size:20px;   
+}
+
+#date{
+    color:black;
+    text-decoration: none;
+}
+
+.search-album{
+    padding-inline-start: 65%;
+    padding-inline-end: 7%;
+    position: absolute;
+    z-index:2;
+}
+
+.search-album .search-album-item{
+    display: inline-block;
+    height: 85px;
+    width:90%;
+    list-style: none;
+    flex-direction: column;
+    border-radius: 12px;
+    background-color: white;
+    transition: 0.3s;
+}
+
+.search-album .search-album-item .resultat{
+    padding-top: 10px;
+}
+
+.search-album .search-album-item .album-desc{
+    padding-left: 15px;
+}
+
+.search-album .search-album-item:hover{
+    background-color: #931513;
+}
+
+.resultat{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+input[type="text"]{
+    float:right;
+    position:relative;
+    width:20%;
+    border-radius: 10px;  
+    height: 50px;
+    position:static;
+    border:2px solid crimson;
+    transition: 0.5s;
+}
+
+input[type="text"]:hover{
+    width:30%;
+}
+
+.loupe{
+    transform: translateX(600px);
+    position:static;
+}
